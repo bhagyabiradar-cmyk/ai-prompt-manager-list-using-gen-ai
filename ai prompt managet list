@@ -1,0 +1,52 @@
+prompts = []
+
+while True:
+    print("\n--- AI Prompt Manager ---")
+    print("1. Add prompt")
+    print("2. View prompts")
+    print("3. Search prompt")
+    print("4. Delete prompt")
+    print("5. Exit")
+
+    choice = int(input("Enter your choice: "))
+
+    if choice == 1:
+        prompt = input("Enter your AI prompt: ")
+        prompts.append(prompt)
+        print("Prompt added successfully!")
+
+    elif choice == 2:
+        if len(prompts) == 0:
+            print("No prompts available.")
+        else:
+            print("\nYour prompts:")
+            for i, prompt in enumerate(prompts, start=1):
+                print(i, ".", prompt)
+
+    elif choice == 3:
+        search = input("Enter keyword: ")
+
+        found = False
+        for prompt in prompts:
+            if search.lower() in prompt.lower():
+                print("Found:", prompt)
+                found = True
+
+        if not found:
+            print("No matching prompt found.")
+
+    elif choice == 4:
+        prompt = input("Enter prompt to delete: ")
+
+        if prompt in prompts:
+            prompts.remove(prompt)
+            print("Prompt deleted!")
+        else:
+            print("Prompt not found.")
+
+    elif choice == 5:
+        print("Goodbye!")
+        break
+
+    else:
+        print("Invalid choice!")
